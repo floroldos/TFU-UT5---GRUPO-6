@@ -1,20 +1,28 @@
-using MySolidWebApi.Interfaces;
 using MySolidWebApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MySolidWebApi.Services
 {
-    public class SurfScoreService : ISurfScoreService
+    public class SurfScoreService : SistemaPuntuacion
     {
         private readonly Database<SurfScore> _database;
 
         public SurfScoreService()
         {
             _database = Database<SurfScore>.Instance;
+            Reglas = new string[]
+            {
+                "Evaluar la velocidad, potencia y fluidez de las maniobras.",
+                "Puntuación basada en la dificultad y el compromiso de las maniobras.",
+                "Innovación y progresión en las maniobras ejecutadas.",
+                "Diversidad y combinación de maniobras mayores.",
+                "Finalización de la ola de manera limpia y controlada."
+            };
         }
 
-        public SurfScore CalculateAndSaveScore(int waveId, int surferId, double[] scores)
+        public override double CalculateFinalScore(double[] scores)
         {
             if (scores == null || scores.Length != 5)
             {
@@ -22,7 +30,12 @@ namespace MySolidWebApi.Services
             }
 
             var orderedScores = scores.OrderBy(s => s).ToArray();
-            var finalScore = orderedScores.Skip(1).Take(3).Average();
+            return orderedScores.Skip(1).Take(3).Average();
+        }
+
+        public SurfScore CalculateAndSaveScore(int waveId, int surferId, double[] scores)
+        {
+            var finalScore = CalculateFinalScore(scores);
 
             var surfScore = new SurfScore
             {
@@ -52,8 +65,7 @@ namespace MySolidWebApi.Services
             if (existingScore != null)
             {
                 existingScore.Scores = scores;
-                var orderedScores = scores.OrderBy(s => s).ToArray();
-                existingScore.FinalScore = orderedScores.Skip(1).Take(3).Average();
+                existingScore.FinalScore = CalculateFinalScore(scores);
             }
         }
 

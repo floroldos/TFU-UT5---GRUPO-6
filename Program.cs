@@ -1,5 +1,6 @@
 using MySolidWebApi.Interfaces;
 using MySolidWebApi.Services;
+using MySolidWebApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Register services
-builder.Services.AddTransient<ISurfScoreService, SurfScoreService>();
+builder.Services.AddTransient<SistemaPuntuacion, SurfScoreService>();
+builder.Services.AddTransient<IDisciplinaService, DisciplinaService>();
 
 var app = builder.Build();
 
