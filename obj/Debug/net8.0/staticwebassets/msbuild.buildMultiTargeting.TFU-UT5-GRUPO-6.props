@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/TFU-UT5-GRUPO-6.props" />
+</Project>
