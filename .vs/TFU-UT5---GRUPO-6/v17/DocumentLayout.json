@@ -1,0 +1,140 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Creator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\Creator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Interfaces\\ISistemaPuntuacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Interfaces\\ISistemaPuntuacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\SistemaPuntuacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\SistemaPuntuacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Interfaces\\IDisciplinaService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Interfaces\\IDisciplinaService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Disciplina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\Disciplina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\SurfScore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\SurfScore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Modalidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\Modalidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Creator.cs",
+              "DocumentMoniker": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Creator.cs",
+              "RelativeDocumentMoniker": "Models\\Creator.cs",
+              "ToolTip": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Creator.cs",
+              "RelativeToolTip": "Models\\Creator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T02:05:55.004Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IDisciplinaService.cs",
+              "DocumentMoniker": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Interfaces\\IDisciplinaService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IDisciplinaService.cs",
+              "ToolTip": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Interfaces\\IDisciplinaService.cs",
+              "RelativeToolTip": "Interfaces\\IDisciplinaService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T02:14:49.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Disciplina.cs",
+              "DocumentMoniker": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Disciplina.cs",
+              "RelativeDocumentMoniker": "Models\\Disciplina.cs",
+              "ToolTip": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Disciplina.cs",
+              "RelativeToolTip": "Models\\Disciplina.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T02:11:14.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SurfScore.cs",
+              "DocumentMoniker": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\SurfScore.cs",
+              "RelativeDocumentMoniker": "Models\\SurfScore.cs",
+              "ToolTip": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\SurfScore.cs",
+              "RelativeToolTip": "Models\\SurfScore.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T02:10:07.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Modalidad.cs",
+              "DocumentMoniker": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Modalidad.cs",
+              "RelativeDocumentMoniker": "Models\\Modalidad.cs",
+              "ToolTip": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\Modalidad.cs",
+              "RelativeToolTip": "Models\\Modalidad.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T02:10:05.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ISistemaPuntuacion.cs",
+              "DocumentMoniker": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Interfaces\\ISistemaPuntuacion.cs",
+              "RelativeDocumentMoniker": "Interfaces\\ISistemaPuntuacion.cs",
+              "ToolTip": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Interfaces\\ISistemaPuntuacion.cs",
+              "RelativeToolTip": "Interfaces\\ISistemaPuntuacion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T02:06:36.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SistemaPuntuacion.cs",
+              "DocumentMoniker": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\SistemaPuntuacion.cs",
+              "RelativeDocumentMoniker": "Models\\SistemaPuntuacion.cs",
+              "ToolTip": "C:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\Models\\SistemaPuntuacion.cs",
+              "RelativeToolTip": "Models\\SistemaPuntuacion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T00:46:48.885Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
