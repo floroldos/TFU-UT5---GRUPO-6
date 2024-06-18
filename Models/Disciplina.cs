@@ -1,16 +1,17 @@
+using MySolidWebApi.Interfaces;
 namespace MySolidWebApi.Models
 {
-    public class Disciplina
+    public abstract class Disciplina
     {
         public string Nombre { get; set; }
-        public SistemaPuntuacion SistemaPuntuacion { get; set; }
-        public Modalidad Modalidad { get; set; }
+        public Modalidad modalidad { get; set; }
 
-        public Disciplina(string nombre, SistemaPuntuacion sistemaPuntuacion, Modalidad modalidad)
+        public abstract double CalculateFinalScore(IPuntaje[] puntajes);
+
+        public Disciplina(string nombre, Modalidad modalidad)
         {
             Nombre = nombre;
-            SistemaPuntuacion = sistemaPuntuacion;
-            Modalidad = modalidad;
+            modalidad = modalidad;
         }
     }
 }
