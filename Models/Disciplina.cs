@@ -1,16 +1,27 @@
+using MySolidWebApi.Interfaces;
 namespace MySolidWebApi.Models
 {
     public class Disciplina
     {
-        public string Nombre { get; set; }
-        public SistemaPuntuacion SistemaPuntuacion { get; set; }
-        public Modalidad Modalidad { get; set; }
+        private IStrategyPuntaje strategy;
+        public string Nombre { get; }
+        public Modalidad Modalidad { get; }
 
-        public Disciplina(string nombre, SistemaPuntuacion sistemaPuntuacion, Modalidad modalidad)
+        public Disciplina(string nombre, Modalidad modalidad)
         {
-            Nombre = nombre;
-            SistemaPuntuacion = sistemaPuntuacion;
-            Modalidad = modalidad;
+            this.Nombre = nombre;
+            this.Modalidad = modalidad;
         }
+
+        public void setStrategyPuntaje(IStrategyPuntaje strategy)
+        {
+            this.strategy = strategy;
+        }
+
+        public double calculateScore(Performance performance)
+        {
+            return strategy.calculateScore(performance);
+        }
+
     }
 }

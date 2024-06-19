@@ -62,9 +62,11 @@ namespace MySolidWebApi.Controllers
             return NoContent();
         }
 
-        [HttpGet("{nombreDisciplina}/calculateScore/{waveId}/{surferId}")]
+        [HttpGet("/performance/{IDPerformance}/calculateScore")]
         public IActionResult CalculateScore(string nombreDisciplina, int waveId, int surferId)
         {
+
+            
             var score = _disciplinaService.CalculateScore(nombreDisciplina, waveId, surferId);
             if (score == null)
             {
@@ -73,19 +75,6 @@ namespace MySolidWebApi.Controllers
             return Ok(score);
         }
 
-        [HttpPut("{nombreDisciplina}/updateScore")]
-        public IActionResult UpdateScore(string nombreDisciplina, [FromBody] PointsRequest request)
-        {
-            _disciplinaService.UpdateScore(nombreDisciplina, request.WaveId, request.SurferId, request.Scores);
-            return NoContent();
-        }
-
-        [HttpDelete("{nombreDisciplina}/deleteScore/{waveId}/{surferId}")]
-        public IActionResult DeleteScore(string nombreDisciplina, int waveId, int surferId)
-        {
-            _disciplinaService.DeleteScore(nombreDisciplina, waveId, surferId);
-            return NoContent();
-        }
     }
 
     public class PointsRequest
