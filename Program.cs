@@ -9,7 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Register services
-builder.Services.AddTransient<ISurfScoreService, SurfScoreService>();
+builder.Services.AddTransient<IScoreService, SurfScoreService>();
 
 var app = builder.Build();
 
