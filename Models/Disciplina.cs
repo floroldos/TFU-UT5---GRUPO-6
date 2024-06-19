@@ -1,17 +1,27 @@
 using MySolidWebApi.Interfaces;
 namespace MySolidWebApi.Models
 {
-    public abstract class Disciplina
+    public class Disciplina
     {
-        public string Nombre { get; set; }
-        public Modalidad modalidad { get; set; }
-
-        public abstract double CalculateFinalScore(IPuntaje[] puntajes);
+        private IStrategyPuntaje strategy;
+        public string Nombre { get; }
+        public Modalidad Modalidad { get; }
 
         public Disciplina(string nombre, Modalidad modalidad)
         {
-            Nombre = nombre;
-            modalidad = modalidad;
+            this.Nombre = nombre;
+            this.Modalidad = modalidad;
         }
+
+        public void setStrategyPuntaje(IStrategyPuntaje strategy)
+        {
+            this.strategy = strategy;
+        }
+
+        public double calculateScore(Performance performance)
+        {
+            return strategy.calculateScore(performance);
+        }
+
     }
 }

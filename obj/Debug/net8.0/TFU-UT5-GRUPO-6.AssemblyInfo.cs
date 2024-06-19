@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TFU-UT5-GRUPO-6")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9a9c5705b51ad14750765bf8307005e224b4450")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f58519ebe7853cdd5f60e8c27856488edc63c17b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TFU-UT5-GRUPO-6")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TFU-UT5-GRUPO-6")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
