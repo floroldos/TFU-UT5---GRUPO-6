@@ -134,3 +134,5 @@ C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-
 C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.pdb
 C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.genruntimeconfig.cache
 C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\ref\TFU-UT5-GRUPO-6.dll
+c:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\TFU-UT5-GRUPO-6.xml
+c:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.xml
