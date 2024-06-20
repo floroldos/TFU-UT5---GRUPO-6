@@ -1,0 +1,13 @@
+{
+  "disciplina": {
+    "modalidad": {
+      "Nombre": "Mariposa",
+      "Categoria": "Hombres"
+    }
+  },
+  "score": {
+    "WaveId": 0,
+    "SurferId": 0,
+    "Scores": [0, 1, 2, 3, 4]
+  }
+}
