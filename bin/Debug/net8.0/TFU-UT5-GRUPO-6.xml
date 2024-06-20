@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TFU-UT5-GRUPO-6</name>
+    </assembly>
+    <members>
+        <member name="M:MySolidWebApi.Controllers.DisciplinaController.AddPerformance(System.Text.Json.JsonElement)">
+            <summary>
+            Adds a performance from an athlete.
+            </summary>
+            <param name="body">The performance to add.</param>
+        </member>
+        <member name="M:MySolidWebApi.Controllers.DisciplinaController.getAllPerformances">
+            <summary>
+            Get a list of all performances.
+            </summary>
+            <returns>A list of performances.</returns>
+        </member>
+        <member name="M:MySolidWebApi.Controllers.DisciplinaController.getRanking(System.String)">
+            <summary>
+            Get a list of all performances from a discipline ordered by points obtained.
+            </summary>
+            <param name="disciplinaName">The name of the discipline.</param>
+            <returns>A list of performances.</returns>
+        </member>
+    </members>
+</doc>
