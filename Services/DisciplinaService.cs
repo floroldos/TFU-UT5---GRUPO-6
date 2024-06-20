@@ -1,7 +1,9 @@
 using MySolidWebApi.Interfaces;
 using MySolidWebApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 namespace MySolidWebApi.Services
 {
@@ -14,13 +16,6 @@ namespace MySolidWebApi.Services
         {
             _database = Database<Disciplina>.Instance;
             _scoreDatabase = Database<SurfScore>.Instance;
-            // Pre-configurar la disciplina de Surf
-            var surf = new Disciplina(
-                "Surf",
-                new SurfScoreService(), // Aquí utilizamos SurfScoreService
-                new Modalidad { Nombre = "Olas", Categoria = "Acuática" }
-            );
-            _database.AddItem(surf);
         }
 
         public Disciplina GetDisciplina(string nombre)
@@ -44,7 +39,7 @@ namespace MySolidWebApi.Services
             if (existingDisciplina != null)
             {
                 existingDisciplina.Nombre = disciplina.Nombre;
-                existingDisciplina.SistemaPuntuacion = disciplina.SistemaPuntuacion;
+                existingDisciplina.ScoreService = disciplina.ScoreService;
                 existingDisciplina.Modalidad = disciplina.Modalidad;
             }
         }
@@ -54,48 +49,160 @@ namespace MySolidWebApi.Services
             var disciplina = GetDisciplina(nombre);
             if (disciplina != null)
             {
-                _database.GetItems().Remove(disciplina);
+                _database.RemoveItem(disciplina);
             }
         }
 
-        public void AddPoints(string nombreDisciplina, int waveId, int surferId, double[] scores)
+        public IScore CalculateAndSaveScore(string nombre, JsonElement data)
         {
-            var disciplina = GetDisciplina(nombreDisciplina);
+            var disciplina = GetDisciplina(nombre);
             if (disciplina != null)
             {
-                var surfScoreService = disciplina.SistemaPuntuacion as SurfScoreService;
-                surfScoreService?.CalculateAndSaveScore(waveId, surferId, scores);
+                // Check if 'Scores' property exists and has 5 elements
+                if (!data.TryGetProperty("Scores", out JsonElement scoresElement) ||
+                    scoresElement.ValueKind != JsonValueKind.Array ||
+                    scoresElement.GetArrayLength() != 5)
+                {
+                    throw new ArgumentException("Five scores are required.");
+                }
+
+                // Check if 'WaveId' property exists
+                if (!data.TryGetProperty("WaveId", out JsonElement waveIdElement) ||
+                    waveIdElement.ValueKind != JsonValueKind.Number)
+                {
+                    throw new ArgumentException("WaveId is required and must be a number.");
+                }
+
+                // Check if 'SurferId' property exists
+                if (!data.TryGetProperty("SurferId", out JsonElement surferIdElement) ||
+                    surferIdElement.ValueKind != JsonValueKind.Number)
+                {
+                    throw new ArgumentException("SurferId is required and must be a number.");
+                }
+
+                var waveId = waveIdElement.GetInt32();
+                var surferId = surferIdElement.GetInt32();
+                var rawScores = scoresElement.EnumerateArray().Select(e => e.GetDouble()).ToArray();
+                var puntaje = rawScores.Select(score => new Puntaje(score)).ToArray();
+
+                string concatenatedString = $"{waveId}.{surferId}";
+                float.TryParse(concatenatedString, out float concatenatedFloat);
+
+                var score = new SurfScoreService().CalculateScore(data);
+
+                var performance = new Performance(concatenatedFloat, DateTime.Now, disciplina, new Equipo(""), puntaje, score);
+                _scoreDatabase.AddItem(score);
+
+                return score;
             }
+            throw new ArgumentException($"Disciplina with name '{nombre}' not found.");
         }
 
-        public SurfScore CalculateScore(string nombreDisciplina, int waveId, int surferId)
+        public IScore GetScore(string nombre, JsonElement data)
         {
-            var disciplina = GetDisciplina(nombreDisciplina);
+            var disciplina = GetDisciplina(nombre);
             if (disciplina != null)
             {
-                var surfScoreService = disciplina.SistemaPuntuacion as SurfScoreService;
-                return surfScoreService?.GetScore(waveId, surferId);
+                // Check if 'WaveId' property exists
+                if (!data.TryGetProperty("WaveId", out JsonElement waveIdElement) ||
+                    waveIdElement.ValueKind != JsonValueKind.Number)
+                {
+                    throw new ArgumentException("WaveId is required and must be a number.");
+                }
+
+                // Check if 'SurferId' property exists
+                if (!data.TryGetProperty("SurferId", out JsonElement surferIdElement) ||
+                    surferIdElement.ValueKind != JsonValueKind.Number)
+                {
+                    throw new ArgumentException("SurferId is required and must be a number.");
+                }
+
+                var waveId = waveIdElement.GetInt32();
+                var surferId = surferIdElement.GetInt32();
+
+                return _scoreDatabase.GetItems().FirstOrDefault(s => s.WaveId == waveId && s.SurferId == surferId);
             }
-            return null;
+            throw new ArgumentException($"Disciplina with name '{nombre}' not found.");
         }
 
-        public void UpdateScore(string nombreDisciplina, int waveId, int surferId, double[] scores)
+        public IEnumerable<IScore> GetAllScores()
         {
-            var disciplina = GetDisciplina(nombreDisciplina);
-            if (disciplina != null)
-            {
-                var surfScoreService = disciplina.SistemaPuntuacion as SurfScoreService;
-                surfScoreService?.UpdateScore(waveId, surferId, scores);
-            }
+            return _scoreDatabase.GetItems();
         }
 
-        public void DeleteScore(string nombreDisciplina, int waveId, int surferId)
+        public void UpdateScore(string nombre, JsonElement data)
         {
-            var disciplina = GetDisciplina(nombreDisciplina);
+            var disciplina = GetDisciplina(nombre);
             if (disciplina != null)
             {
-                var surfScoreService = disciplina.SistemaPuntuacion as SurfScoreService;
-                surfScoreService?.DeleteScore(waveId, surferId);
+                // Check if 'Scores' property exists and has 5 elements
+                if (!data.TryGetProperty("Scores", out JsonElement scoresElement) ||
+                    scoresElement.ValueKind != JsonValueKind.Array ||
+                    scoresElement.GetArrayLength() != 5)
+                {
+                    throw new ArgumentException("Five scores are required.");
+                }
+
+                // Check if 'WaveId' property exists
+                if (!data.TryGetProperty("WaveId", out JsonElement waveIdElement) ||
+                    waveIdElement.ValueKind != JsonValueKind.Number)
+                {
+                    throw new ArgumentException("WaveId is required and must be a number.");
+                }
+
+                // Check if 'SurferId' property exists
+                if (!data.TryGetProperty("SurferId", out JsonElement surferIdElement) ||
+                    surferIdElement.ValueKind != JsonValueKind.Number)
+                {
+                    throw new ArgumentException("SurferId is required and must be a number.");
+                }
+
+                var waveId = waveIdElement.GetInt32();
+                var surferId = surferIdElement.GetInt32();
+                var rawScores = scoresElement.EnumerateArray().Select(e => e.GetDouble()).ToArray();
+                var puntaje = rawScores.Select(score => new Puntaje(score)).ToArray();
+
+                string concatenatedString = $"{waveId}.{surferId}";
+                float.TryParse(concatenatedString, out float concatenatedFloat);
+
+                var score = new SurfScoreService().CalculateScore(data);
+                var performance = new Performance(concatenatedFloat, DateTime.Now, disciplina, new Equipo(""), puntaje, score);
+
+                var element = _scoreDatabase.GetItems().FirstOrDefault(s => s.WaveId == waveId && s.SurferId == surferId);
+
+                if (element != null)
+                {
+                    element.FinalScore = score.FinalScore;
+                    element.Scores = score.Scores;
+                    element.SurferId = element.SurferId;
+                    element.WaveId = element.WaveId;
+                }
+            }
+            throw new ArgumentException($"Disciplina with name '{nombre}' not found.");
+        }
+
+        public void DeleteScore(string nombre, JsonElement data)
+        {
+            // Check if 'WaveId' property exists
+            if (!data.TryGetProperty("WaveId", out JsonElement waveIdElement) ||
+                waveIdElement.ValueKind != JsonValueKind.Number)
+            {
+                throw new ArgumentException("WaveId is required and must be a number.");
+            }
+
+            // Check if 'SurferId' property exists
+            if (!data.TryGetProperty("SurferId", out JsonElement surferIdElement) ||
+                surferIdElement.ValueKind != JsonValueKind.Number)
+            {
+                throw new ArgumentException("SurferId is required and must be a number.");
+            }
+
+            var waveId = waveIdElement.GetInt32();
+            var surferId = surferIdElement.GetInt32();
+            var score = _scoreDatabase.GetItems().FirstOrDefault(s => s.WaveId == waveId && s.SurferId == surferId);
+            if (score != null)
+            {
+                _scoreDatabase.RemoveItem(score);
             }
         }
     }

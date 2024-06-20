@@ -1,41 +1,44 @@
+using MySolidWebApi.Interfaces;
 using MySolidWebApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Text.Json;
 
 namespace MySolidWebApi.Services
 {
-    public class SurfScoreService : SistemaPuntuacion
+    public class SurfScoreService : IScoreService
     {
-        private readonly Database<SurfScore> _database;
 
-        public SurfScoreService()
-        {
-            _database = Database<SurfScore>.Instance;
-            Reglas = new string[]
-            {
-                "Evaluar la velocidad, potencia y fluidez de las maniobras.",
-                "Puntuación basada en la dificultad y el compromiso de las maniobras.",
-                "Innovación y progresión en las maniobras ejecutadas.",
-                "Diversidad y combinación de maniobras mayores.",
-                "Finalización de la ola de manera limpia y controlada."
-            };
-        }
 
-        public override double CalculateFinalScore(double[] scores)
+        public SurfScore CalculateScore(JsonElement data)
         {
-            if (scores == null || scores.Length != 5)
+            // Check if 'Scores' property exists and has 5 elements
+            if (!data.TryGetProperty("Scores", out JsonElement scoresElement) || 
+                scoresElement.ValueKind != JsonValueKind.Array ||
+                scoresElement.GetArrayLength() != 5)
             {
                 throw new ArgumentException("Five scores are required.");
             }
 
-            var orderedScores = scores.OrderBy(s => s).ToArray();
-            return orderedScores.Skip(1).Take(3).Average();
-        }
+            // Check if 'WaveId' property exists
+            if (!data.TryGetProperty("WaveId", out JsonElement waveIdElement) || 
+                waveIdElement.ValueKind != JsonValueKind.Number)
+            {
+                throw new ArgumentException("WaveId is required and must be a number.");
+            }
 
-        public SurfScore CalculateAndSaveScore(int waveId, int surferId, double[] scores)
-        {
-            var finalScore = CalculateFinalScore(scores);
+            // Check if 'SurferId' property exists
+            if (!data.TryGetProperty("SurferId", out JsonElement surferIdElement) || 
+                surferIdElement.ValueKind != JsonValueKind.Number)
+            {
+                throw new ArgumentException("SurferId is required and must be a number.");
+            }
+
+            // Extract values from the request
+            var waveId = data.GetProperty("WaveId").GetInt32();
+            var surferId = data.GetProperty("SurferId").GetInt32();
+            var scores = scoresElement.EnumerateArray().Select(e => e.GetDouble()).ToArray();
+
+            var orderedScores = scores.OrderBy(s => s).ToArray();
+            var finalScore = orderedScores.Skip(1).Take(3).Average();
 
             var surfScore = new SurfScore
             {
@@ -45,37 +48,8 @@ namespace MySolidWebApi.Services
                 FinalScore = finalScore
             };
 
-            _database.AddItem(surfScore);
             return surfScore;
         }
 
-        public SurfScore GetScore(int waveId, int surferId)
-        {
-            return _database.GetItems().FirstOrDefault(s => s.WaveId == waveId && s.SurferId == surferId);
-        }
-
-        public IEnumerable<SurfScore> GetAllScores()
-        {
-            return _database.GetItems();
-        }
-
-        public void UpdateScore(int waveId, int surferId, double[] scores)
-        {
-            var existingScore = GetScore(waveId, surferId);
-            if (existingScore != null)
-            {
-                existingScore.Scores = scores;
-                existingScore.FinalScore = CalculateFinalScore(scores);
-            }
-        }
-
-        public void DeleteScore(int waveId, int surferId)
-        {
-            var score = GetScore(waveId, surferId);
-            if (score != null)
-            {
-                _database.GetItems().Remove(score);
-            }
-        }
     }
 }

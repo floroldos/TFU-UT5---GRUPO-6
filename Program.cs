@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Register services
-builder.Services.AddTransient<SistemaPuntuacion, SurfScoreService>();
+// builder.Services.AddTransient<SistemaPuntuacion, SurfScoreService>();
 builder.Services.AddTransient<IDisciplinaService, DisciplinaService>();
 
 var app = builder.Build();

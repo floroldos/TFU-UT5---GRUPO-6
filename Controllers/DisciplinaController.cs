@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using MySolidWebApi.Interfaces;
 using MySolidWebApi.Models;
+using MySolidWebApi.Services;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace MySolidWebApi.Controllers
 {
@@ -9,65 +11,123 @@ namespace MySolidWebApi.Controllers
     [Route("api/[controller]")]
     public class DisciplinaController : ControllerBase
     {
-        private readonly IDisciplinaService _disciplinaService;
+        private readonly IDisciplinaService _disciplinaService = new DisciplinaService();
 
-        public DisciplinaController(IDisciplinaService disciplinaService)
+        private readonly IScoreService _surfScoreService = new SurfScoreService();
+
+        private IScoreService GetScoreService(string disciplina)
         {
-            _disciplinaService = disciplinaService;
+            switch (disciplina)
+            {
+                case "Surf":
+                    return _surfScoreService;
+                    break;
+                default:
+                    break;
+            }
+            return null;
         }
 
-        [HttpGet("{nombre}")]
-        public IActionResult GetDisciplina(string nombre)
+        [HttpGet()]
+        [Route("")]
+        public IActionResult GetDisciplina([FromQuery] string nombre)
         {
-            var disciplina = _disciplinaService.GetDisciplina(nombre);
+            var disciplina = _disciplinaService;
             if (disciplina == null)
             {
                 return NotFound();
             }
-            return Ok(disciplina);
+            return Ok(disciplina.GetDisciplina(nombre));
         }
 
-        [HttpGet]
-        public IActionResult GetAllDisciplinas()
+        // [HttpGet]
+        // public IActionResult GetAllDisciplinas()
+        // {
+        //     var disciplinas = _disciplinaService.GetAllDisciplinas();
+        //     return Ok(disciplinas);
+        // }
+
+        [HttpPost()]
+        [Route("")]
+        public IActionResult AddDisciplina([FromQuery] string nombre, [FromBody] JsonElement body)
         {
-            var disciplinas = _disciplinaService.GetAllDisciplinas();
-            return Ok(disciplinas);
+            // Check if 'modalidad' property exists
+            if (!body.TryGetProperty("modalidad", out JsonElement modalidadRaw))
+            {
+                throw new ArgumentException("SurferId is required and must be a number.");
+            }
+
+            var modalidad = JsonSerializer.Deserialize<Modalidad>(modalidadRaw.GetRawText());
+            if (modalidad == null)
+            {
+                throw new ArgumentException("Error deserializing modalidad.");
+            }
+
+            var disciplinaService = _disciplinaService;
+
+            var scoreService = GetScoreService(nombre);
+            if (scoreService == null)
+            {
+                throw new InvalidOperationException($"ScoreService not found for nombre: {nombre}");
+            }
+
+            var newDisciplina = new Disciplina(nombre, scoreService, modalidad);
+            disciplinaService.AddDisciplina(newDisciplina);
+            return Ok();
+        }
+
+        [HttpPut("")]
+        public IActionResult UpdateDisciplina([FromQuery] string nombre, [FromBody] JsonElement body)
+        {
+            // Check if 'modalidad' property exists
+            if (!body.TryGetProperty("modalidad", out JsonElement modalidadRaw))
+            {
+                throw new ArgumentException("SurferId is required and must be a number.");
+            }
+
+            var modalidad = JsonSerializer.Deserialize<Modalidad>(modalidadRaw.GetRawText());
+            if (modalidad == null)
+            {
+                throw new ArgumentException("Error deserializing modalidad.");
+            }
+
+            var disciplinaService = _disciplinaService;
+
+            var scoreService = GetScoreService(nombre);
+            if (scoreService == null)
+            {
+                throw new InvalidOperationException($"ScoreService not found for nombre: {nombre}");
+            }
+            var newDisciplina = new Disciplina(nombre, scoreService, modalidad);
+            disciplinaService.UpdateDisciplina(nombre, newDisciplina);
+            return NoContent();
+        }
+
+        [HttpDelete("")]
+        public IActionResult DeleteDisciplina([FromQuery] string nombre)
+        {
+            var disciplina = _disciplinaService;
+            disciplina.DeleteDisciplina(nombre);
+            return NoContent();
         }
 
         [HttpPost]
-        public IActionResult AddDisciplina([FromBody] Disciplina disciplina)
+        [Route("addScore")]
+        public IActionResult CalculateAndSaveScore([FromQuery] string name, [FromBody] JsonElement body)
         {
-            _disciplinaService.AddDisciplina(disciplina);
-            return CreatedAtAction(nameof(GetDisciplina), new { nombre = disciplina.Nombre }, disciplina);
+            var service = _disciplinaService;
+
+            var result = service.CalculateAndSaveScore(name, body);
+            return Ok();
+            // return Ok(result);
         }
 
-        [HttpPut("{nombre}")]
-        public IActionResult UpdateDisciplina(string nombre, [FromBody] Disciplina disciplina)
+        [HttpPost("getScore")]
+        public IActionResult GetScore([FromQuery] string name, [FromBody] JsonElement body)
         {
-            _disciplinaService.UpdateDisciplina(nombre, disciplina);
-            return NoContent();
-        }
+            var service = _disciplinaService;
 
-        [HttpDelete("{nombre}")]
-        public IActionResult DeleteDisciplina(string nombre)
-        {
-            _disciplinaService.DeleteDisciplina(nombre);
-            return NoContent();
-        }
-
-        [HttpPost("{nombreDisciplina}/addPoints")]
-        public IActionResult AddPoints(string nombreDisciplina, [FromBody] PointsRequest request)
-        {
-            _disciplinaService.AddPoints(nombreDisciplina, request.WaveId, request.SurferId, request.Scores);
-            return NoContent();
-        }
-
-        [HttpGet("/performance/{IDPerformance}/calculateScore")]
-        public IActionResult CalculateScore(string nombreDisciplina, int waveId, int surferId)
-        {
-
-            
-            var score = _disciplinaService.CalculateScore(nombreDisciplina, waveId, surferId);
+            var score = service.GetScore(name, body);
             if (score == null)
             {
                 return NotFound();
@@ -75,12 +135,54 @@ namespace MySolidWebApi.Controllers
             return Ok(score);
         }
 
+        [HttpGet("getAllScores")]
+        public IActionResult GetAllScores([FromQuery] string name)
+        {
+            var service = _disciplinaService;
+
+            var scores = service.GetAllScores();
+            return Ok(scores);
+        }
+
+        [HttpPut("updateScore")]
+        public IActionResult UpdateScore([FromQuery] string name, [FromBody] JsonElement body)
+        {
+            var service = _disciplinaService;
+
+            service.UpdateScore(name, body);
+
+            return NoContent();
+        }
+
+        [HttpDelete("deleteScore")]
+        public IActionResult DeleteScore([FromQuery] string name, [FromBody] JsonElement body)
+        {
+            var service = _disciplinaService;
+
+            service.DeleteScore(name, body);
+
+            return NoContent();
+        }
+
+        // [HttpGet("/performance/{IDPerformance}/calculateScore")]
+        // public IActionResult CalculateScore(string nombreDisciplina, int waveId, int surferId)
+        // {
+
+
+        //     var score = _disciplinaService.CalculateScore(nombreDisciplina, waveId, surferId);
+        //     if (score == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     return Ok(score);
+        // }
+
     }
 
-    public class PointsRequest
-    {
-        public int WaveId { get; set; }
-        public int SurferId { get; set; }
-        public double[] Scores { get; set; }
-    }
+    // public class PointsRequest
+    // {
+    //     public int WaveId { get; set; }
+    //     public int SurferId { get; set; }
+    //     public double[] Scores { get; set; }
+    // }
 }

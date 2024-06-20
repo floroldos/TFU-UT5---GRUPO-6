@@ -1,6 +1,6 @@
 namespace MySolidWebApi.Models
 {
-    public class SurfScore
+    public class SurfScore : IScore
     {
         public int WaveId { get; set; }
         public int SurferId { get; set; }

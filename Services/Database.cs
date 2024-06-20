@@ -24,5 +24,10 @@ namespace MySolidWebApi.Services
         {
             items.Add(item);
         }
+
+        public void RemoveItem(T item)
+        {
+            items.Remove(item);
+        }
     }
 }

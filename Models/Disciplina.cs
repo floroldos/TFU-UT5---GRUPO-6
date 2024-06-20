@@ -4,12 +4,14 @@ namespace MySolidWebApi.Models
     public class Disciplina
     {
         private IStrategyPuntaje strategy;
-        public string Nombre { get; }
-        public Modalidad Modalidad { get; }
+        public string Nombre { get; set; }
+        public Modalidad Modalidad { get; set; }
+        public IScoreService ScoreService { get; set; }
 
-        public Disciplina(string nombre, Modalidad modalidad)
+        public Disciplina(string nombre, IScoreService service, Modalidad modalidad)
         {
             this.Nombre = nombre;
+            this.ScoreService = service;
             this.Modalidad = modalidad;
         }
 
