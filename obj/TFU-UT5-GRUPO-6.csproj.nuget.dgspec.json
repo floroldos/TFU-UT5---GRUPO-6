@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nicolas/Documents/Facultad/ada/tfu-ut5/TFU-UT5-GRUPO-6.csproj": {}
+    "c:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\TFU-UT5-GRUPO-6.csproj": {}
   },
   "projects": {
-    "/Users/nicolas/Documents/Facultad/ada/tfu-ut5/TFU-UT5-GRUPO-6.csproj": {
+    "c:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\TFU-UT5-GRUPO-6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nicolas/Documents/Facultad/ada/tfu-ut5/TFU-UT5-GRUPO-6.csproj",
+        "projectUniqueName": "c:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\TFU-UT5-GRUPO-6.csproj",
         "projectName": "TFU-UT5-GRUPO-6",
-        "projectPath": "/Users/nicolas/Documents/Facultad/ada/tfu-ut5/TFU-UT5-GRUPO-6.csproj",
-        "packagesPath": "/Users/nicolas/.nuget/packages/",
-        "outputPath": "/Users/nicolas/Documents/Facultad/ada/tfu-ut5/obj/",
+        "projectPath": "c:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\TFU-UT5-GRUPO-6.csproj",
+        "packagesPath": "C:\\Users\\gfeli\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\gfeli\\Desktop\\Ucu\\Quinto Semestre\\ADA\\Unidades\\UT5\\TFU\\TFU-UT5---GRUPO-6\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/nicolas/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\gfeli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,7 +52,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.6.2, )"
             }
           },
           "imports": [
@@ -71,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

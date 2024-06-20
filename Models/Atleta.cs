@@ -1,3 +1,6 @@
+
+using System.Text.Json.Serialization;
+
 namespace MySolidWebApi.Models
 {
     public enum Sexo
@@ -7,14 +10,29 @@ namespace MySolidWebApi.Models
     }
     public class Atleta
     {
-        public double Peso { get; }
+        [JsonPropertyName("Nombre")]
 
-        public Sexo Sexo { get; }
+        public string Nombre { get; set; }
 
-        public Atleta(double peso, Sexo sexo)
+        [JsonPropertyName("Peso")]
+
+        public double Peso { get; set; }
+
+        [JsonPropertyName("Sexo")]
+
+        public Sexo Sexo { get; set; }
+
+        [JsonConstructor]
+        public Atleta(string nombre, double peso, Sexo sexo)
         {
+            this.Nombre = nombre;
             this.Peso = peso;
             this.Sexo = sexo;
+        }
+
+        public Atleta()
+        {
+
         }
 
     }

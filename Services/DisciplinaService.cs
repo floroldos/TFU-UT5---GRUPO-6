@@ -5,17 +5,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
+
 namespace MySolidWebApi.Services
 {
     public class DisciplinaService : IDisciplinaService
     {
         private readonly Database<Disciplina> _database;
         private readonly Database<SurfScore> _scoreDatabase;
+        private readonly Database<Performance> _performanceDatabase;
 
+        private Handler handler1 = new HandlerHalterofilia();
+        private Handler handler2 = new HandlerSurf();
+        private Handler handler3 = new HandlerNatacion();
         public DisciplinaService()
         {
             _database = Database<Disciplina>.Instance;
             _scoreDatabase = Database<SurfScore>.Instance;
+            _performanceDatabase = Database<Performance>.Instance;
+            var surf = new Disciplina(
+               "Surf",
+               new Modalidad("Olas", "Acuática")
+           );
+
+            var halterofilia = new Disciplina(
+                "Halterofilia",
+                new Modalidad("Masculino", "")
+            );
+
+            var natacion = new Disciplina(
+               "Natación",
+               new Modalidad("Libre", "100m masculino")
+           );
+
+            _database.AddItem(surf);
+            _database.AddItem(natacion);
+            _database.AddItem(halterofilia);
+
+            handler1.setNext(handler2);
+            handler2.setNext(handler3);
+
         }
 
         public Disciplina GetDisciplina(string nombre)
@@ -90,7 +118,7 @@ namespace MySolidWebApi.Services
 
                 var score = new SurfScoreService().CalculateScore(data);
 
-                var performance = new Performance(concatenatedFloat, DateTime.Now, disciplina, new Equipo(""), puntaje, score);
+                var performance = new Performance(concatenatedFloat, DateTime.Now, disciplina, new Equipo("", [new Atleta("nombre", 50, Sexo.Masculino)]), puntaje);
                 _scoreDatabase.AddItem(score);
 
                 return score;
@@ -166,7 +194,7 @@ namespace MySolidWebApi.Services
                 float.TryParse(concatenatedString, out float concatenatedFloat);
 
                 var score = new SurfScoreService().CalculateScore(data);
-                var performance = new Performance(concatenatedFloat, DateTime.Now, disciplina, new Equipo(""), puntaje, score);
+                var performance = new Performance(concatenatedFloat, DateTime.Now, disciplina, new Equipo("", [new Atleta("nombre", 50, Sexo.Masculino)]), puntaje);
 
                 var element = _scoreDatabase.GetItems().FirstOrDefault(s => s.WaveId == waveId && s.SurferId == surferId);
 
@@ -205,5 +233,68 @@ namespace MySolidWebApi.Services
                 _scoreDatabase.RemoveItem(score);
             }
         }
+
+        // NUEVOS ENDPOINTS
+        public void AddPerformance(JsonElement body)
+        {
+            Performance performance;
+            try
+            {
+
+                /* var options = new JsonSerializerOptions
+                                {
+                                    PropertyNameCaseInsensitive = true
+                                };*/
+                performance = JsonSerializer.Deserialize<Performance>(body.GetRawText());
+                if (performance.Disciplina == null)
+                {
+                    throw new ArgumentException("Disciplina not found");
+                }
+                var disciplinaExists = _database.GetItems().FirstOrDefault(d => d.Nombre == performance.Disciplina.Nombre);
+                if (disciplinaExists == null)
+                {
+                    throw new ArgumentException("Disciplina not found");
+                }
+                performance.Disciplina = disciplinaExists;
+                if (performance.Puntaje.Length == 0)
+                {
+                    throw new ArgumentException("Puntaje not found");
+                }
+                if (performance.Equipo.Atletas.Length == 0)
+                {
+                    throw new ArgumentException("Equipo/Atletas not found");
+                }
+
+            }
+            catch (JsonException)
+            {
+                throw new JsonException();
+            }
+
+            _performanceDatabase.AddItem(performance);
+
+        }
+
+        public IEnumerable<Performance> getRankingDisciplina(String nombreDisciplina)
+        {
+            var disciplinaExists = _database.GetItems().Any(d => d.Nombre == nombreDisciplina);
+            if (!disciplinaExists)
+            {
+                throw new ArgumentException("Disciplina not found");
+            }
+
+            IEnumerable<Performance> performances = _performanceDatabase.GetItems().Where(p => p.Disciplina.Nombre == nombreDisciplina);
+            foreach (var p in performances)
+            {
+                p.puntajeObtenido = handler1.handle(p);
+            }
+            return performances.OrderByDescending(p => p.puntajeObtenido);
+        }
+
+        public IEnumerable<Performance> GetAllPerformances()
+        {
+            return _performanceDatabase.GetItems();
+        }
+
     }
 }

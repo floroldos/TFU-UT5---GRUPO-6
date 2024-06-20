@@ -1,4 +1,5 @@
 using MySolidWebApi.Interfaces;
+using MySolidWebApi.Services;
 namespace MySolidWebApi.Models
 {
 
@@ -7,13 +8,13 @@ namespace MySolidWebApi.Models
 
         public double calculateScore(Performance performance)
         {
+            // poner como puntajeObtenido el tiempo
             if (performance.Puntaje == null)
             {
                 throw new Exception("Le falta puntaje a la performance.");
             }
-            return 0.0;
+
+            return performance.Puntaje[0].Calificacion;
         }
-
     }
-
 }

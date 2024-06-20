@@ -99,3 +99,38 @@
 /Users/nicolas/Documents/Facultad/ada/tfu-ut5/obj/Debug/net8.0/TFU-UT5-.27C1D957.Up2Date
 /Users/nicolas/Documents/Facultad/ada/tfu-ut5/obj/Debug/net8.0/TFU-UT5-GRUPO-6.genruntimeconfig.cache
 /Users/nicolas/Documents/Facultad/ada/tfu-ut5/obj/Debug/net8.0/ref/TFU-UT5-GRUPO-6.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\appsettings.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\ExampleBody.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\TFU-UT5-GRUPO-6.exe
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\TFU-UT5-GRUPO-6.deps.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\TFU-UT5-GRUPO-6.runtimeconfig.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\TFU-UT5-GRUPO-6.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\TFU-UT5-GRUPO-6.pdb
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.csproj.AssemblyReference.cache
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.AssemblyInfoInputs.cache
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.AssemblyInfo.cs
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.csproj.CoreCompileInputs.cache
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.sourcelink.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\staticwebassets\msbuild.TFU-UT5-GRUPO-6.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\staticwebassets\msbuild.build.TFU-UT5-GRUPO-6.props
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TFU-UT5-GRUPO-6.props
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TFU-UT5-GRUPO-6.props
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\scopedcss\bundle\TFU-UT5-GRUPO-6.styles.css
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-.27C1D957.Up2Date
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\refint\TFU-UT5-GRUPO-6.dll
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.pdb
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\TFU-UT5-GRUPO-6.genruntimeconfig.cache
+C:\Users\gfeli\Desktop\Ucu\Quinto Semestre\ADA\Unidades\UT5\TFU\TFU-UT5---GRUPO-6\obj\Debug\net8.0\ref\TFU-UT5-GRUPO-6.dll

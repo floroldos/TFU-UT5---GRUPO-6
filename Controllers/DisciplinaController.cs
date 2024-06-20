@@ -47,70 +47,71 @@ namespace MySolidWebApi.Controllers
         //     return Ok(disciplinas);
         // }
 
-        [HttpPost()]
-        [Route("")]
-        public IActionResult AddDisciplina([FromQuery] string nombre, [FromBody] JsonElement body)
-        {
-            // Check if 'modalidad' property exists
-            if (!body.TryGetProperty("modalidad", out JsonElement modalidadRaw))
-            {
-                throw new ArgumentException("SurferId is required and must be a number.");
-            }
+        /*
+                [HttpPost()]
+                [Route("")]
+                public IActionResult AddDisciplina([FromQuery] string nombre, [FromBody] JsonElement body)
+                {
+                    // Check if 'modalidad' property exists
+                    if (!body.TryGetProperty("modalidad", out JsonElement modalidadRaw))
+                    {
+                        throw new ArgumentException("SurferId is required and must be a number.");
+                    }
 
-            var modalidad = JsonSerializer.Deserialize<Modalidad>(modalidadRaw.GetRawText());
-            if (modalidad == null)
-            {
-                throw new ArgumentException("Error deserializing modalidad.");
-            }
+                    var modalidad = JsonSerializer.Deserialize<Modalidad>(modalidadRaw.GetRawText());
+                    if (modalidad == null)
+                    {
+                        throw new ArgumentException("Error deserializing modalidad.");
+                    }
 
-            var disciplinaService = _disciplinaService;
+                    var disciplinaService = _disciplinaService;
 
-            var scoreService = GetScoreService(nombre);
-            if (scoreService == null)
-            {
-                throw new InvalidOperationException($"ScoreService not found for nombre: {nombre}");
-            }
+                    var scoreService = GetScoreService(nombre);
+                    if (scoreService == null)
+                    {
+                        throw new InvalidOperationException($"ScoreService not found for nombre: {nombre}");
+                    }
 
-            var newDisciplina = new Disciplina(nombre, scoreService, modalidad);
-            disciplinaService.AddDisciplina(newDisciplina);
-            return Ok();
-        }
+                    var newDisciplina = new Disciplina(nombre, modalidad);
+                    disciplinaService.AddDisciplina(newDisciplina);
+                    return Ok();
+                }
 
-        [HttpPut("")]
-        public IActionResult UpdateDisciplina([FromQuery] string nombre, [FromBody] JsonElement body)
-        {
-            // Check if 'modalidad' property exists
-            if (!body.TryGetProperty("modalidad", out JsonElement modalidadRaw))
-            {
-                throw new ArgumentException("SurferId is required and must be a number.");
-            }
+                [HttpPut("")]
+                public IActionResult UpdateDisciplina([FromQuery] string nombre, [FromBody] JsonElement body)
+                {
+                    // Check if 'modalidad' property exists
+                    if (!body.TryGetProperty("modalidad", out JsonElement modalidadRaw))
+                    {
+                        throw new ArgumentException("SurferId is required and must be a number.");
+                    }
 
-            var modalidad = JsonSerializer.Deserialize<Modalidad>(modalidadRaw.GetRawText());
-            if (modalidad == null)
-            {
-                throw new ArgumentException("Error deserializing modalidad.");
-            }
+                    var modalidad = JsonSerializer.Deserialize<Modalidad>(modalidadRaw.GetRawText());
+                    if (modalidad == null)
+                    {
+                        throw new ArgumentException("Error deserializing modalidad.");
+                    }
 
-            var disciplinaService = _disciplinaService;
+                    var disciplinaService = _disciplinaService;
 
-            var scoreService = GetScoreService(nombre);
-            if (scoreService == null)
-            {
-                throw new InvalidOperationException($"ScoreService not found for nombre: {nombre}");
-            }
-            var newDisciplina = new Disciplina(nombre, scoreService, modalidad);
-            disciplinaService.UpdateDisciplina(nombre, newDisciplina);
-            return NoContent();
-        }
+                    var scoreService = GetScoreService(nombre);
+                    if (scoreService == null)
+                    {
+                        throw new InvalidOperationException($"ScoreService not found for nombre: {nombre}");
+                    }
+                    var newDisciplina = new Disciplina(nombre, modalidad);
+                    disciplinaService.UpdateDisciplina(nombre, newDisciplina);
+                    return NoContent();
+                }
 
-        [HttpDelete("")]
-        public IActionResult DeleteDisciplina([FromQuery] string nombre)
-        {
-            var disciplina = _disciplinaService;
-            disciplina.DeleteDisciplina(nombre);
-            return NoContent();
-        }
-
+                [HttpDelete("")]
+                public IActionResult DeleteDisciplina([FromQuery] string nombre)
+                {
+                    var disciplina = _disciplinaService;
+                    disciplina.DeleteDisciplina(nombre);
+                    return NoContent();
+                }
+        */
         [HttpPost]
         [Route("addScore")]
         public IActionResult CalculateAndSaveScore([FromQuery] string name, [FromBody] JsonElement body)
@@ -118,11 +119,12 @@ namespace MySolidWebApi.Controllers
             var service = _disciplinaService;
 
             var result = service.CalculateAndSaveScore(name, body);
+
             return Ok();
             // return Ok(result);
         }
 
-        [HttpPost("getScore")]
+        [HttpGet("getScore")]
         public IActionResult GetScore([FromQuery] string name, [FromBody] JsonElement body)
         {
             var service = _disciplinaService;
@@ -132,6 +134,7 @@ namespace MySolidWebApi.Controllers
             {
                 return NotFound();
             }
+
             return Ok(score);
         }
 
@@ -163,6 +166,50 @@ namespace MySolidWebApi.Controllers
 
             return NoContent();
         }
+        [HttpPost("addAthlete")]
+        public IActionResult AddAthlete([FromQuery] string disciplinaName, [FromQuery] int IDAtleta, [FromQuery] string name, [FromQuery] string weight, [FromQuery] string sex, [FromQuery] Puntaje puntaje)
+        {
+            return Ok();
+        }
+
+
+        // NUEVO
+        [HttpPost("addPerformance")]
+        public IActionResult AddPerformance([FromBody] JsonElement body)
+        {
+            var service = _disciplinaService;
+
+            service.AddPerformance(body);
+            /*
+            Atleta[] atletas = new Atleta[2];
+            atletas[0] = new Atleta("Atleta1", 150, Sexo.Masculino);
+            atletas[1] = new Atleta("Atleta2", 160, Sexo.Femenino);
+            Equipo equipo = new Equipo("NombreEquipo", atletas);
+            var performance = new Performance(1, DateTime.Now, new Disciplina("Nombre", new Modalidad("nombre", "categoria")), equipo, [new Puntaje(5.0)]);
+            */
+            return Ok();
+        }
+
+        [HttpGet("getAllPerformances")]
+        public IActionResult getAllPerformances()
+        {
+            var service = _disciplinaService;
+
+            return Ok(service.GetAllPerformances());
+        }
+
+
+        [HttpGet("ranking")]
+        public IActionResult getRanking([FromQuery] string disciplinaName)
+        {
+            var service = _disciplinaService;
+
+            IEnumerable<Performance> performances = service.getRankingDisciplina(disciplinaName);
+
+            return Ok(performances);
+        }
+
+
 
         // [HttpGet("/performance/{IDPerformance}/calculateScore")]
         // public IActionResult CalculateScore(string nombreDisciplina, int waveId, int surferId)

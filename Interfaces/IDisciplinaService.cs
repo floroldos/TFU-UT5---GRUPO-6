@@ -16,5 +16,10 @@ namespace MySolidWebApi.Interfaces
         IEnumerable<IScore> GetAllScores();
         void UpdateScore(string nombre, JsonElement data);
         void DeleteScore(string nombre, JsonElement data);
+        void AddPerformance(JsonElement body);
+        IEnumerable<Performance> getRankingDisciplina(string disciplinaName);
+
+        public IEnumerable<Performance> GetAllPerformances();
+
     }
 }

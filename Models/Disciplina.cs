@@ -8,10 +8,9 @@ namespace MySolidWebApi.Models
         public Modalidad Modalidad { get; set; }
         public IScoreService ScoreService { get; set; }
 
-        public Disciplina(string nombre, IScoreService service, Modalidad modalidad)
+        public Disciplina(string nombre, Modalidad modalidad)
         {
             this.Nombre = nombre;
-            this.ScoreService = service;
             this.Modalidad = modalidad;
         }
 
